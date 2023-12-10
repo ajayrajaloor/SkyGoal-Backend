@@ -7,14 +7,11 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors({ origin: 'http://localhost:3001' }));
+app.use(cors());
 
 async function connectDB() {
     try {
-      await mongoose.connect(process.env.MONGO_URL, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      });
+      await mongoose.connect(process.env.MONGO_URL);
   
       console.log("MongoDB has been connected:", mongoose.connection.name);
     } catch (error) {
